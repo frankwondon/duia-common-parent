@@ -13,7 +13,10 @@ package com.duia.dubbo.common.http.repsonse;
  */
 public enum ResponseCommon {
     C_200(200,"请求成功"),
-    C_500(500,"请求失败");
+    C_500(500,"请求失败"),
+    C_501(501,"登录失败"),
+    C_502(502,"登录超时"),
+    C_503(503,"用户账号密码不正确");
     ResponseCommon(Integer code, String msg){
         this.code=code;
         this.msg=msg;
