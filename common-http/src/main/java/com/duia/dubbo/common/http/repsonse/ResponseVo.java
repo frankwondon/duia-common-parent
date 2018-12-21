@@ -13,6 +13,8 @@ public class ResponseVo<T> implements Serializable {
     private Integer code=ResponseCommon.C_200.getCode();
     /**提示信息*/
     private String msg=ResponseCommon.C_200.getMsg();
+    /**系统时间戳*/
+    private Long timeStamp=System.currentTimeMillis();
     /**返回对象*/
     private T result;
 
@@ -52,5 +54,9 @@ public class ResponseVo<T> implements Serializable {
 
     public void setResult(T result) {
         this.result = result;
+    }
+
+    public Long getTimeStamp() {
+        return timeStamp;
     }
 }
