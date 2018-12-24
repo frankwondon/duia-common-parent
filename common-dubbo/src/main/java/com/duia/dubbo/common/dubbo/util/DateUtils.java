@@ -4,6 +4,10 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -918,96 +922,7 @@ public class DateUtils {
         return c.get(Calendar.MINUTE);
     }
 
-    public static boolean isDay() {
-        Date now = new Date();
-        Integer hour = getNowHour(now);
-//        Integer minute = getNowMinute(now);
-        if (hour >= 22) {
-//            if (hour == 20) {
-//                if (minute > 30) {
-            return false;
-//                } else {
-//                    return true;
-//                }
-//            }
-//            return false;
-        } else {
-            return true;
-        }
-    }
 
-    public static long getDayTimeDistance() {
-        Date now = new Date();
-        Integer hour = getNowHour(now);
-        Integer minute = getNowMinute(now);
-        if (hour >= 8 && hour <= 19) {
-//            if (hour == 17) {
-//                if (minute > 30) {
-//                    return -1;
-//                }
-//            }
-            Calendar c = Calendar.getInstance();
-            c.setTime(now);
-            c.set(Calendar.HOUR_OF_DAY, 19);
-            c.set(Calendar.MINUTE, 0);
-            c.set(Calendar.SECOND, 0);
-            return c.getTime().getTime() - now.getTime();
-        } else {
-            return -1;
-        }
-    }
-
-    public static long getNightTimeDistance() {
-        Date now = new Date();
-        Integer hour = getNowHour(now);
-        if (hour >= 19 && hour < 24) {
-            Calendar c = Calendar.getInstance();
-            c.setTime(now);
-            c.set(Calendar.HOUR_OF_DAY, 24);
-            c.set(Calendar.MINUTE, 0);
-            c.set(Calendar.SECOND, 0);
-            return c.getTime().getTime() - now.getTime();
-        } else {
-            return -1;
-        }
-    }
-
-    public static long getReserveDistance(Date date, String start) {
-        Calendar startDate = Calendar.getInstance();
-        String[] split = start.split(":");
-        startDate.setTime(date);
-        startDate.set(Calendar.HOUR_OF_DAY, Integer.parseInt(split[0]));
-        startDate.set(Calendar.MINUTE, Integer.parseInt(split[1]));
-        Calendar c = Calendar.getInstance();
-        return startDate.getTime().getTime() - c.getTime().getTime();
-    }
-
-    public static Date getDateByTime(Date date, Integer hour, Integer minute) {
-        Calendar c = Calendar.getInstance();
-        c.setTime(date);
-        c.set(Calendar.HOUR_OF_DAY, hour);
-        c.set(Calendar.MINUTE, minute);
-        c.set(Calendar.SECOND, 0);
-        return c.getTime();
-    }
-
-
-    public static String getOrdeNumByDay(String date, String orderNum) {
-        String o = orderNum.substring(8);
-        return date + o;
-    }
-
-    public static String getDateByDay(String dateStr, Date date) {
-        String year = dateStr.substring(0, 4);
-        String month = dateStr.substring(4, 6);
-        String day = dateStr.substring(6, 8);
-        Calendar c = Calendar.getInstance();
-        c.setTime(date);
-        c.set(Calendar.YEAR, Integer.parseInt(year));
-        c.set(Calendar.MONTH, Integer.parseInt(month) - 1);
-        c.set(Calendar.DAY_OF_MONTH, Integer.parseInt(day));
-        return DateUtils.dateToString(c.getTime(), "yyyy-MM-dd HH:mm:ss");
-    }
 
     public static String dateStringformat(String dateStr, String format) {
         String format2 = "yyyy-MM-dd";
@@ -1015,13 +930,6 @@ public class DateUtils {
         return dateToString(date, format);
     }
 
-    public static Calendar spellCanlendar(Date date, Integer hour, Integer minute) {
-        Calendar c = Calendar.getInstance();
-        c.setTime(date);
-        c.set(Calendar.HOUR_OF_DAY, hour);
-        c.set(Calendar.MINUTE, minute);
-        return c;
-    }
 
     public static String dayOrTomorrowOrThoer(Date date) {
         Calendar n = Calendar.getInstance();
@@ -1168,6 +1076,29 @@ public class DateUtils {
             e.printStackTrace();
         }
         return d;
+    }
+
+    /**
+     * 获取日期是当前月的第几天
+     * @return
+     */
+    public static int dateOfMonthIndex(Date date){
+        Instant instant = date.toInstant();//An instantaneous point on the time-line.(时间线上的一个瞬时点。)
+        ZoneId zoneId = ZoneId.systemDefault();//A time-zone ID, such as {@code Europe/Paris}.(时区)
+        LocalDate localDate = instant.atZone(zoneId).toLocalDate();
+        return localDate.getDayOfMonth();
+    }
+
+    /**
+     * 判断日期是不是今天
+     * @return
+     */
+    public static boolean dateIsToday(Date date){
+        Instant instant = date.toInstant();//An instantaneous point on the time-line.(时间线上的一个瞬时点。)
+        ZoneId zoneId = ZoneId.systemDefault();//A time-zone ID, such as {@code Europe/Paris}.(时区)
+        LocalDate localDate = instant.atZone(zoneId).toLocalDate();
+        LocalDate localDateNow = LocalDate.now();
+        return localDate.equals(localDateNow);
     }
 
 
