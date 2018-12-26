@@ -1,4 +1,4 @@
-package com.duia.dubbo.common.dubbo.exception;
+package com.duia.bean.common.dubbo.exception;
 /**
  *   Dubbo公用异常信息
  *  各自的业务还需要另行扩展，规范同Dubbo的返回错误接口一致

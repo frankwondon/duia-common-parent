@@ -1,4 +1,4 @@
-package com.duia.dubbo.common.dubbo.util;
+package com.duia.bean.common.dubbo.util;
 
 import java.util.ArrayList;
 import java.util.List;

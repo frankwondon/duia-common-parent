@@ -1,4 +1,4 @@
-package com.duia.dubbo.common.http.repsonse;
+package com.duia.bean.common.repsonse;
 /**
  * Http返回的信息
  * 此类只应用于所有Http服务器公用的
@@ -11,13 +11,13 @@ package com.duia.dubbo.common.http.repsonse;
  * @date 2018/12/17
  * @version 1.0.0
  */
-public enum ResponseCommon {
+public enum ResponseCode {
     C_200(200,"请求成功"),
     C_500(500,"请求失败"),
     C_501(501,"登录失败"),
     C_502(502,"登录超时"),
     C_503(503,"用户账号密码不正确");
-    ResponseCommon(Integer code, String msg){
+    ResponseCode(Integer code, String msg){
         this.code=code;
         this.msg=msg;
     }

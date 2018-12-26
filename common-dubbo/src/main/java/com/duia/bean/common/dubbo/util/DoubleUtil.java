@@ -1,4 +1,4 @@
-package com.duia.dubbo.common.dubbo.util;
+package com.duia.bean.common.dubbo.util;
 
 /**
  * Created by dutianzhao on 2015/9/29.

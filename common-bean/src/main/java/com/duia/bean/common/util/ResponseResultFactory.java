@@ -1,7 +1,7 @@
-package com.duia.dubbo.common.http.util;
+package com.duia.bean.common.util;
 
-import com.duia.dubbo.common.http.repsonse.ResponseCommon;
-import com.duia.dubbo.common.http.repsonse.ResponseVo;
+import com.duia.bean.common.repsonse.ResponseCode;
+import com.duia.bean.common.repsonse.ResponseVo;
 
 import java.util.Objects;
 
@@ -12,7 +12,7 @@ import java.util.Objects;
  * @version 1.0.0
  * @date 2018/12/17
  */
-public class HttpResultFactory {
+public class ResponseResultFactory {
     /**
      * http返回结果 自定义
      * @param code 返回码
@@ -42,8 +42,8 @@ public class HttpResultFactory {
      */
     public static <T> ResponseVo<T> failCommon() {
         ResponseVo<T> vo = new ResponseVo<>();
-        vo.setCode(ResponseCommon.C_500.getCode());
-        vo.setMsg(ResponseCommon.C_500.getMsg());
+        vo.setCode(ResponseCode.C_500.getCode());
+        vo.setMsg(ResponseCode.C_500.getMsg());
         return vo;
     }
 
@@ -53,8 +53,8 @@ public class HttpResultFactory {
      */
     public static <T> ResponseVo<T> successCommon(T result) {
         ResponseVo<T> vo = new ResponseVo<>();
-        vo.setCode(ResponseCommon.C_200.getCode());
-        vo.setMsg(ResponseCommon.C_200.getMsg());
+        vo.setCode(ResponseCode.C_200.getCode());
+        vo.setMsg(ResponseCode.C_200.getMsg());
         if (result != null) {
             vo.setResult(result);
         }

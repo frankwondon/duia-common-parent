@@ -1,4 +1,4 @@
-package com.duia.dubbo.common.http.repsonse;
+package com.duia.bean.common.repsonse;
 
 import java.io.Serializable;
 /**
@@ -10,9 +10,9 @@ import java.io.Serializable;
  */
 public class ResponseVo<T> implements Serializable {
     /**状态码*/
-    private Integer code=ResponseCommon.C_200.getCode();
+    private Integer code= ResponseCode.C_200.getCode();
     /**提示信息*/
-    private String msg=ResponseCommon.C_200.getMsg();
+    private String msg= ResponseCode.C_200.getMsg();
     /**系统时间戳*/
     private Long timeStamp=System.currentTimeMillis();
     /**返回对象*/

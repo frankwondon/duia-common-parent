@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
     <version>1.0.0</version>
     <modules>
-        <module>common-http</module>
+        <module>common-bean</module>
         <module>common-dubbo</module>
     </modules>
     <build>
