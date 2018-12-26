@@ -13,6 +13,7 @@ package com.duia.bean.common.repsonse;
  */
 public enum ResponseCode {
     C_200(200,"请求成功"),
+    C_300(300,"未登录状态"),
     C_500(500,"请求失败"),
     C_501(501,"登录失败"),
     C_502(502,"登录超时"),
