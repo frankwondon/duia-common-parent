@@ -17,7 +17,8 @@ public enum ResponseCode {
     C_500(500,"请求失败"),
     C_501(501,"登录失败"),
     C_502(502,"登录超时"),
-    C_503(503,"用户账号密码不正确");
+    C_503(503,"用户账号密码不正确"),
+    C_504(504,"服务调用异常");
     ResponseCode(Integer code, String msg){
         this.code=code;
         this.msg=msg;
