@@ -1100,5 +1100,18 @@ public class DateUtils {
         return localDate.equals(localDateNow);
     }
 
+    /**
+     * 某一天的起始与截至时间
+     * @param date
+     * @return [0] xx 00:00:00 [1]xx 23:59:59
+     */
+    public static Date[] oneDayStartAndEnd(Date date){
+        String ymd = format(date, LONG_DATE_FORMAT);
+        Date [] result=new Date[2];
+        result[0]= stringtoDate(ymd+" 00:00:00",FORMAT_ONE);
+        result[1]= stringtoDate(ymd+" 23:59:59",FORMAT_ONE);
+        return result;
+    }
+
 
 }
