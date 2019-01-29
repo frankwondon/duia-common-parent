@@ -12,7 +12,8 @@ package com.duia.bean.common.dubbo.exception;
  */
 public enum  CommonException {
     E_500(500,"请求失败"),
-    E_501(501,"参数%s为NULL");
+    E_501(501,"参数%s为NULL"),
+    E_502(502,"服务被熔断");
     CommonException(Integer code, String msg){
         this.code=code;
         this.msg=msg;

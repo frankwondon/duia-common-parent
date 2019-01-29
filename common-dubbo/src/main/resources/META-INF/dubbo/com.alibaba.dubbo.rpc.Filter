@@ -1,0 +1,1 @@
+sentinel.consumer.filter=com.duia.bean.common.dubbo.filter.SentinelConsumerFilter

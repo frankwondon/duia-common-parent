@@ -19,7 +19,10 @@ public enum ResponseCode {
     C_502(502,"登录超时"),
     C_503(503,"用户账号密码不正确"),
     C_504(504,"服务调用异常"),
-    C_505(505,"请求结果为空");
+    C_505(505,"请求结果为空"),
+    C_506(506,"服务被熔断"),
+
+    ;
     ResponseCode(Integer code, String msg){
         this.code=code;
         this.msg=msg;
