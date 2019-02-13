@@ -4,6 +4,7 @@ import com.duia.bean.common.dubbo.exception.SentinelInitException;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.ClassPathResource;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -24,7 +25,8 @@ public class SentinelContext {
     private synchronized static void initProperties() {
         Properties prop = null;
         try {
-            InputStream inputStream = new FileInputStream(SentinelContext.class.getResource("/").getPath() + "sentinel.properties");
+            ClassPathResource classPathResource=new ClassPathResource("sentinel.properties");
+            InputStream inputStream = classPathResource.getInputStream();
             if (inputStream == null){
                 logger.error("sentinel.properties not found!");
             }
